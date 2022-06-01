@@ -1,0 +1,1 @@
+className="flex flex-col justify-center items-center h-screen bg-pink-200"
