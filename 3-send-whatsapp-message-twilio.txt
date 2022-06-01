@@ -1,0 +1,22 @@
+// requires axios and qs package
+
+async function sendAPI() {
+  console.log("calling api")
+  await axios.post(
+    "https://api.twilio.com/2010-04-01/Accounts/" +
+    "AC61972b971466890ff2d8afbcd1300cef" +
+    "/Messages.json",
+    qs.stringify({
+      Body: `demo message`,
+      From: "whatsapp:+14155238886",
+      To: "whatsapp:+919352529834",
+    }),
+    {
+      auth: {
+        username: process.env.REACT_APP_TWILIO_USERNAME,
+        password: process.env.REACT_APP_TWILIO_PASSWORD,
+      },
+    }
+  );
+  console.log("calling api 1")
+}

@@ -1,0 +1,28 @@
+const nodemailer = require("nodemailer");
+
+const transporter = nodemailer.createTransport({
+    service: 'Gmail',  
+    auth: {
+      user: process.env.USERNAME,
+      pass: process.env.PASSWORD,
+    },
+});
+
+async function sendEmail(data) {
+  try{
+    return transporter.sendMail({
+      from: `${data.senderName} <user@domain.com>`,
+      to: data.to,
+      replyTo: data.replyTo,
+      subject: data.subject,
+      text: data.text,
+      html: data.html,
+      ...(data.attachments && {attachments:
+});
+  } catch(err) {
+    console.log(err);
+  }
+}
+  
+
+module.exports = sendEmail;
